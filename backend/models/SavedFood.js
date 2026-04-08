@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { FOOD_UNITS } from "../config/foodUnits.js";
 
-/** User-defined foods: nutrition per 100g or per 100ml only. */
+/** User-defined foods: nutrition stored per selected unit. */
 const savedFoodSchema = new mongoose.Schema(
   {
     userId: {
@@ -10,11 +11,11 @@ const savedFoodSchema = new mongoose.Schema(
       index: true,
     },
     name: { type: String, required: true, trim: true },
-    /** kcal per 100g or per 100ml (matches `unit`). */
+    /** kcal per selected unit (matches `unit`). */
     calories: { type: Number, required: true, min: 0 },
-    /** Protein (g) per 100g or per 100ml. */
+    /** Protein (g) per selected unit. */
     protein: { type: Number, required: true, min: 0 },
-    unit: { type: String, required: true, enum: ["100g", "100ml"] },
+    unit: { type: String, required: true, enum: FOOD_UNITS },
   },
   { timestamps: true }
 );
