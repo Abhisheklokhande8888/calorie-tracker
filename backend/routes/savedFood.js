@@ -1,21 +1,31 @@
-import { Router } from "express";
-import { body } from "express-validator";
-import { protect } from "../middleware/auth.js";
-import * as savedFoodController from "../controllers/savedFoodController.js";
-import { FOOD_UNITS } from "../config/foodUnits.js";
+/** Must match backend `config/foodUnits.js` values. */
+export const DEFAULT_FOOD_UNIT = "100g";
 
-const router = Router();
-
-const itemValidators = [
-  body("name").trim().notEmpty().withMessage("Name is required"),
-  body("calories").isFloat({ min: 0 }).withMessage("Calories must be a non-negative number"),
-  body("protein").isFloat({ min: 0 }).withMessage("Protein must be a non-negative number"),
-  body("unit").isIn(FOOD_UNITS).withMessage("Invalid unit"),
+/** Units allowed for user-saved foods. */
+export const SAVED_FOOD_UNIT_OPTIONS = [
+  { value: "100g", label: "100g" },
+  { value: "100ml", label: "100 ml" },
+  { value: "serving", label: "Per serving" },
+  { value: "tbsp", label: "Per tbsp" },
+  { value: "piece", label: "Per piece" },
 ];
 
-router.get("/", protect, savedFoodController.list);
-router.post("/", protect, itemValidators, savedFoodController.create);
-router.put("/:id", protect, itemValidators, savedFoodController.update);
-router.delete("/:id", protect, savedFoodController.remove);
+export const FOOD_UNIT_OPTIONS = [
+  { value: "100g", label: "100g" },
+  { value: "100ml", label: "100 ml" },
+  { value: "1g", label: "Per 1g" },
+  { value: "serving", label: "Per serving" },
+  { value: "cup", label: "Per cup" },
+  { value: "tbsp", label: "Per tbsp" },
+  { value: "piece", label: "Per piece" },
+  { value: "ml", label: "Per ml" },
+  { value: "oz", label: "Per oz" },
+];
 
-export default router;
+const LABEL_BY_VALUE = Object.fromEntries(FOOD_UNIT_OPTIONS.map((o) => [o.value, o.label]));
+
+/** Human-readable label for a unit key (e.g. "100g"). */
+export function unitLabel(unit) {
+  const u = unit || DEFAULT_FOOD_UNIT;
+  return LABEL_BY_VALUE[u] ?? u;
+}
