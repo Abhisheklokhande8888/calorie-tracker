@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api.js";
-import { SAVED_FOOD_UNIT_OPTIONS } from "../constants/foodUnits.js";
+import { SAVED_FOOD_UNIT_OPTIONS, unitLabel } from "../constants/foodUnits.js";
 
 const emptyForm = {
   name: "",
@@ -95,7 +95,7 @@ export default function MyFoods() {
         <div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">My foods</h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-            Save calories and protein per 100g or 100 ml, then pick them on{" "}
+            Save calories and protein per selected unit, then pick them on{" "}
             <Link to="/add-food" className="text-brand-600 dark:text-brand-400 font-medium hover:underline">
               Add food
             </Link>{" "}
@@ -133,7 +133,7 @@ export default function MyFoods() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Calories (kcal / 100g or 100 ml)
+                Calories (kcal / selected unit)
               </label>
               <input
                 type="number"
@@ -147,7 +147,7 @@ export default function MyFoods() {
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Protein (g / 100g or 100 ml)
+                Protein (g / selected unit)
               </label>
               <input
                 type="number"
@@ -214,7 +214,7 @@ export default function MyFoods() {
               <div>
                 <p className="font-medium text-slate-900 dark:text-white">{item.name}</p>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {item.calories} kcal · {item.protein}g protein per {item.unit === "100ml" ? "100 ml" : "100g"}
+                  {item.calories} kcal · {item.protein}g protein / {unitLabel(item.unit)}
                 </p>
               </div>
               <div className="flex gap-2 shrink-0">
