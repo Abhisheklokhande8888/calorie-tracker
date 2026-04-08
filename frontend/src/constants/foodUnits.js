@@ -1,10 +1,11 @@
 /** Must match backend `config/foodUnits.js` values. */
 export const DEFAULT_FOOD_UNIT = "100g";
 
-/** Units allowed for user-saved foods (per 100g / per 100ml only). */
+/** Units allowed for user-saved foods. */
 export const SAVED_FOOD_UNIT_OPTIONS = [
   { value: "100g", label: "100g" },
   { value: "100ml", label: "100 ml" },
+  { value: "serving", label: "Per serving" },
   { value: "tbsp", label: "Per tbsp" },
   { value: "piece", label: "Per piece" },
 ];
