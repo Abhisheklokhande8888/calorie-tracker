@@ -5,6 +5,8 @@ export const DEFAULT_FOOD_UNIT = "100g";
 export const SAVED_FOOD_UNIT_OPTIONS = [
   { value: "100g", label: "100g" },
   { value: "100ml", label: "100 ml" },
+  { value: "tbsp", label: "Per tbsp" },
+  { value: "piece", label: "Per piece" },
 ];
 
 export const FOOD_UNIT_OPTIONS = [
