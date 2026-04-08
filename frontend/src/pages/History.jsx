@@ -98,12 +98,12 @@ export default function History() {
           )}
 
           {pag && pag.totalPages > 1 && (
-            <div className="flex items-center justify-center gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-10">
               <button
                 type="button"
                 disabled={!pag.hasPrev || loading}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 disabled:opacity-40"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 disabled:opacity-40"
               >
                 Previous
               </button>
@@ -114,7 +114,7 @@ export default function History() {
                 type="button"
                 disabled={!pag.hasNext || loading}
                 onClick={() => setPage((p) => p + 1)}
-                className="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 disabled:opacity-40"
+                className="w-full sm:w-auto px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 disabled:opacity-40"
               >
                 Next
               </button>
