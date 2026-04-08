@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import AddFood from "./pages/AddFood.jsx";
 import History from "./pages/History.jsx";
 import MyFoods from "./pages/MyFoods.jsx";
+import Calculator from "./pages/Calculator.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
 
 function HomeRedirect() {
@@ -74,6 +75,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <MyFoods />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/calculator"
+            element={
+              <ProtectedRoute>
+                <Calculator />
               </ProtectedRoute>
             }
           />

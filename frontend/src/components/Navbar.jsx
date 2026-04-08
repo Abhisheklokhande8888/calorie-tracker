@@ -34,6 +34,9 @@ export default function Navbar() {
             <NavLink to="/my-foods" className={linkClass}>
               My foods
             </NavLink>
+            <NavLink to="/calculator" className={linkClass}>
+              Calculator
+            </NavLink>
             <NavLink to="/history" className={linkClass}>
               History
             </NavLink>
