@@ -94,7 +94,7 @@ export default function AddFood() {
         <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">My foods</h2>
         {savedFoods.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            Save your own items (per 100g or 100 ml) on{" "}
+            Save your own items (per selected unit) on{" "}
             <Link to="/my-foods" className="text-brand-600 dark:text-brand-400 font-medium hover:underline">
               My foods
             </Link>{" "}
@@ -119,7 +119,7 @@ export default function AddFood() {
               <option value="">Load from my foods…</option>
               {savedFoods.map((s) => (
                 <option key={s._id} value={s._id}>
-                  {s.name} ({s.calories} kcal · {s.protein}g / {s.unit === "100ml" ? "100 ml" : "100g"})
+                  {s.name} ({s.calories} kcal · {s.protein}g / {unitLabel(s.unit)})
                 </option>
               ))}
             </select>
