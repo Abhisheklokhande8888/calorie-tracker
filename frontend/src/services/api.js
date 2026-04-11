@@ -15,6 +15,4 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-console.log("BASE URL:", baseURL);
-
 export default api;
